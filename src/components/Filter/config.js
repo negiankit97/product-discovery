@@ -33,15 +33,15 @@ const formConfig = [
         child: [
             {
                 label: "Tshirts",
-                value: "tshirts",
+                value: "Tshirts",
             },
             {
                 label: "Tops",
-                value: "tops"
+                value: "Tops"
             },
             {
                 label: "Dresses",
-                value: "dresses"
+                value: "Dresses"
             },
             {
                 label: "Casual Shoes",
@@ -99,26 +99,6 @@ const formConfig = [
             }
         ]
     },
-    {
-        label: "PRICE",
-        name: "price",
-        type: "checkbox-group",
-        child: [
-            {
-                label: "Rs.49 to Rs.50025",
-                name: "49-50025"
-            },
-            {
-                label: "Rs.50025 to Rs.10025",
-                name: "50025-10025"
-            },
-            {
-                label: "Rs.10025 to Rs.149971",
-                name: "10025-149971"
-            }
-        ]
-    },
-
 ];
 
 export { formConfig };

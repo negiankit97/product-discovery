@@ -34,7 +34,6 @@ const fetchProducts = () => async (dispatch) => {
             type: LOADING_STATE
         });
         const response = await getProductsApi();
-        console.log(response);
         return dispatch({
             type: FETCH_PRODUCTS_SUCCESS,
             payload: response.data.products

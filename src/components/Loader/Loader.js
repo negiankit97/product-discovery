@@ -5,8 +5,8 @@ import { CircularProgress, Fade } from "@material-ui/core";
 const useStyles = makeStyles(theme => ({
     root: {
         position: "absolute",
-        height: "100%",
-        width: "100%",
+        height: window.outerHeight,
+        width: window.outerWidth,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

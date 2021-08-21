@@ -1,6 +1,5 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Header from "../../../components/Header/Header";
 import MainContent from "../MainContent/MainContent";
@@ -10,9 +9,12 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1
     },
     paper: {
-        padding: theme.spacing(1),
+        padding: theme.spacing(3,0),
         textAlign: 'center',
         color: theme.palette.text.secondary
+    },
+    content: {
+        paddingTop: theme.spacing(4,0)
     }
 }));
 
@@ -21,12 +23,12 @@ const HomePage = props => {
 
     return (
         <div className={classes.root}>
-            <Grid container>
+            <Grid container spacing={3}>
                 <Grid container item xs={12} spacing={3}>
                     <Header />
                 </Grid>
                 <Grid container item xs={12} spacing={3}>
-                    <MainContent />
+                    <MainContent/>
                 </Grid>
             </Grid>
         </div>

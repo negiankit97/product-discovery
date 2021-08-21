@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import DisplayProduct from "../../../components/DisplayProduct/DisplayProduct";
 import { fetchProducts } from "../../../actions";
@@ -10,7 +9,7 @@ import Loader from "../../../components/Loader/Loader";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1
+        //   marginTop: theme.spacing(7,0)  
     },
     paper: {
         padding: theme.spacing(1),
@@ -35,7 +34,7 @@ const MainContent = props => {
                 <FilterList />
             </Grid>
             <Grid item xs={12} sm={9}>
-                <DisplayProduct products={isActiveFilter ? filteredProducts: products}/>
+                <DisplayProduct products={isActiveFilter ? filteredProducts : products} activeFilter={isActiveFilter} />
             </Grid>
         </>
     )

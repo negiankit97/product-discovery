@@ -1,53 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Grid } from '@material-ui/core';
+import { CardMedia, Grid } from '@material-ui/core';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 100,
-    height: 275
+    height: 350,
+    cursor: "pointer"
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+  media: {
+    height: 200,
+    backgroundPosition: "top",
+    backgroundSize: "cover"
   },
   title: {
     fontSize: 14,
   },
-  pos: {
-    marginBottom: 12,
+  product: {
+    fontSize: "14px",
+    display: 'block',
+    width: "100%",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+    margin: theme.spacing(1,0)
   },
-});
+  price: {
+    textDecoration: "line-through"
+  }
+}));
 
 export default function ProductCard(props) {
   const classes = useStyles();
-
+  const [raise, setRaised] = useState(0);
   return (
-    <Grid item xs={12} sm={3} spacing={2}>
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {props.productName}
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+    <Grid item xs={12} sm={3} spacing={5}>
+      <Card
+        className={classes.root}
+        elevation={raise}
+        onMouseOver={() => setRaised(3)}
+        onMouseOut={() => setRaised(0)}
+      >
+        <CardMedia
+          className={classes.media}
+          image={props.searchImage}
+          title={props.productName}
+        />
+        <CardContent>
+          <Typography className={classes.title} color="textPrimary" gutterBottom>
+            {props.brand}
+          </Typography>
+          <Typography className={classes.product} color="textSecondary">
+            {props.productName}
+          </Typography>
+          <Typography variant="body2" component="p">
+            {`Rs.${props.price}`}
+            &nbsp;
+            {props.price !== props.mrp && <Typography className={classes.price} variant="body2" component="span">{`Rs.${props.mrp}`}</Typography>}&nbsp;
+            <Typography style={{color: "orange"}} variant="body2" component="span">{props.discountDisplayLabel}</Typography>
+          </Typography>
+        </CardContent>
+      </Card>
     </Grid>
   );
 }
